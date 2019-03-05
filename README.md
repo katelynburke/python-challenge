@@ -1,2 +1,2 @@
 # python-challenge
-Python challenge assignment: PyBank and PyPoll
+Katelyn Burke's Python challenge assignment: PyBank and PyPoll
