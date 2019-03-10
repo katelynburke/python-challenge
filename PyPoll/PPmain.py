@@ -12,46 +12,35 @@ with open(csvpath, newline="") as csvfile:
 # total number of votes cast
 # number of rows minus header
     count = len(open(csvpath).readlines())
+    #list of all candidate votes
+    candidate_votes = []
 
-# empty dictionary
+    for vote in csvreader:
+        # pulling out the candidate column
+        candidate_votes.append(vote[2])
 
-    frequency = {}
+    candidate_totals = {}
+    # candidate_votes is the list
+    for vote in candidate_votes:
+        # if IN dictionary add 1 to total
+        if vote in candidate_totals:
+            candidate_totals[vote] = candidate_totals[vote] + 1
+        # if NOT in dictionary set = 1
+        # adding the candidate to the dictionary
+        else:
+            candidate_totals[vote] = 1
 
-    for candidate_name in votes:
-        count = frequency.get(word, 1)
-        frequency[candidate_name] = count + 1
-    
-    frequency_list = frequency.keys()
-
-    for words in frequency_list:
-        print(words, frequency[words])
-
-   # total = 0
-    # winnerVotes = []
-    # for row in csvreader:
-       # total += str(row[2])
-       # winnerVote = (row [0])
-        # winnerVotes.append(winnerVote)
-
-    # max_votes = winnerVotes[0]
-
-   # for winnerVote in winnerVotes:
-       # if (winnerVote[0] > max_votes[0]):
-           # max_votes = winnerVote
-
-  # print(max_votes)
-
-    # loop through the candidates and count them - index 2
+    print(candidate_totals)
 
 
-print("Election Results")
-print(" -------------------------")
-print("Total Votes: ", str(count - 1))
-print(" -------------------------")
-print("Khan:")
-print("Correy:")
-print("Li:")
-print("O'Tooley:")
-print(" -------------------------")
-print("Winner:")
-print(" -------------------------")
+    print("Election Results")
+    print(" -------------------------")
+    print("Total Votes: ", str(count - 1))
+    print(" -------------------------")
+    # candidate_totals = {'Khan': 2218231, 'Correy': 704200, 'Li': 492940, "O'Tooley": 105630}
+    for candidate_totals,vote in candidate_totals.items():
+        #print(f"Total: ${str(total)}")
+        print(f"{candidate_totals}: {str(vote)}")
+    print(" -------------------------")
+    print("Winner:")
+    print(" -------------------------")
