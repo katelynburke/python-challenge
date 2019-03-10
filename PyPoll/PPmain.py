@@ -30,7 +30,7 @@ with open(csvpath, newline="") as csvfile:
         else:
             candidate_totals[vote] = 1
 
-    print(candidate_totals)
+    #print(candidate_totals)
 
 
     print("Election Results")
@@ -38,9 +38,17 @@ with open(csvpath, newline="") as csvfile:
     print("Total Votes: ", str(count - 1))
     print(" -------------------------")
     # candidate_totals = {'Khan': 2218231, 'Correy': 704200, 'Li': 492940, "O'Tooley": 105630}
-    for candidate_totals,vote in candidate_totals.items():
-        #print(f"Total: ${str(total)}")
-        print(f"{candidate_totals}: {str(vote)}")
+    max_vote = 0
+    max_candidate = ''
+    for candidate_name, vote in candidate_totals.items():
+        # need to find percentage of votes for each candidate
+        # candidate votes / total votes * 100
+        percentage = (vote / count) * 100
+        print(f" {candidate_name}: {round(percentage, 4)}% ({str(vote)})")
+        if vote > max_vote:
+            max_vote = vote
+            max_candidate = candidate_name
+
     print(" -------------------------")
-    print("Winner:")
+    print("Winner:", max_candidate)
     print(" -------------------------")
