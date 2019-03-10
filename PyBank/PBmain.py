@@ -20,39 +20,39 @@ with open(csvpath, newline="") as csvfile:
     # total begins at zero
     total = 0
     # empty list for the profits each month
-    monthsProfits = []
+    months_profits = []
     # reader = csv.reader(bankData)
     for row in csvreader:
         total += int(row[1])
-        # monthsProfits.append(int(row[1]))
+        # months_profits.append(int(row[1]))
         monthProfit = [row[0], int(row[1])]
-        monthsProfits.append(monthProfit)
+        months_profits.append(monthProfit)
 
     # average of changes of profits/losses
-    monthDifferences = []
-    for idx, row in enumerate(monthsProfits):
+    month_differences = []
+    for idx, row in enumerate(months_profits):
         # print(row, idx) 
         # 867884 , 0
         #If the index plus 1 is less than the number of months 
-        if (idx + 1) < len(monthsProfits):
+        if (idx + 1) < len(months_profits):
             # 11231
-            # current = monthsProfits[idx][1]
-            # next = monthsProfits[idx + 1][1]
+            # current = months_profits[idx][1]
+            # next = months_profits[idx + 1][1]
             # ['feb-2012', 12312] - ['mar-2012', 1231]
-            current = monthsProfits[idx]
-            next = monthsProfits[idx + 1]
-            monthDifference = [next[0], int(next[1] - current[1])] 
-            monthDifferences.append(monthDifference)
-            # monthDifferences.append(int(next - current))
+            current = months_profits[idx]
+            next = months_profits[idx + 1]
+            month_difference = [next[0], int(next[1] - current[1])] 
+            month_differences.append(month_difference)
+            # month_differences.append(int(next - current))
 
-    # print(monthDifferences)
+    # print(month_differences)
 
     # gives a list of all of the differences (changes) between the months
     # now, find average by adding all of the numbers in the list
     # and dividing by the length of the list
-    avgMonthlyDifferencesTotal = 0
-    for monthDifference in monthDifferences:
-        avgMonthlyDifferencesTotal += monthDifference[1]
+    avg_monthly_differencesTotal = 0
+    for month_difference in month_differences:
+        avg_monthly_differencesTotal += month_difference[1]
 
 
     print("Financial Analysis")
@@ -66,15 +66,15 @@ with open(csvpath, newline="") as csvfile:
 
     print(f"Total: ${str(total)}")
 
-    avgChange = avgMonthlyDifferencesTotal / len(monthDifferences)
+    avgChange = avg_monthly_differencesTotal / len(month_differences)
     print(f"Average Change: ${round(avgChange, 2)}")
 
 
-    max_month = monthDifferences[0]
-    min_month = monthDifferences[0]
+    max_month = month_differences[0]
+    min_month = month_differences[0]
 
     # ['month',difference]
-    for month_difference in monthDifferences:
+    for month_difference in month_differences:
         if (month_difference[1] > max_month[1]):
             max_month = month_difference
 
