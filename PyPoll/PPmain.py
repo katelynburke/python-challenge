@@ -33,7 +33,6 @@ with open(csvpath, newline="") as csvfile:
     #print(candidate_totals)
 
 
-    text_file = open("Py_Poll.txt","w")
 
     print("Election Results")
     print(" -------------------------")
@@ -55,4 +54,13 @@ with open(csvpath, newline="") as csvfile:
     print("Winner:", max_candidate)
     print(" -------------------------")
 
-    text_file.close()
+
+with open('py_poll_kb.txt', 'w') as text:
+    text.write("Election Results\n")
+    text.write(" -------------------------\n")
+    text.write(f"Total Votes: {str(count - 1)}\n")
+    text.write(" -------------------------\n")
+    text.write(f" {candidate_name}: {round(percentage, 4)}% ({str(vote)})\n")
+    text.write(" -------------------------\n")
+    text.write(f"Winner: {str(max_candidate)}\n")
+    text.write(" -------------------------\n")
