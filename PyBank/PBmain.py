@@ -86,5 +86,11 @@ with open(csvpath, newline="") as csvfile:
 
 
 
-
-
+with open('py_poll_kb.txt', 'w') as text:
+    text.write("Financial Analysis\n")
+    text.write("-------------------------\n")
+    text.write(f"Total Months: {str(count - 1)}\n")
+    text.write(f"Total: ${str(total)}\n")
+    text.write(f"Average Change: ${round(avgChange, 2)}\n")
+    text.write(f"Greatest Increase in Profits: {str(max_month[0])} (${str(max_month[1])})\n")
+    text.write(f"Greatest Decrease in Profits: {str(min_month[0])} (${str(min_month[1])})\n")
