@@ -33,6 +33,8 @@ with open(csvpath, newline="") as csvfile:
     #print(candidate_totals)
 
 
+    text_file = open("Py_Poll.txt","w")
+
     print("Election Results")
     print(" -------------------------")
     print("Total Votes: ", str(count - 1))
@@ -52,3 +54,5 @@ with open(csvpath, newline="") as csvfile:
     print(" -------------------------")
     print("Winner:", max_candidate)
     print(" -------------------------")
+
+    text_file.close()
