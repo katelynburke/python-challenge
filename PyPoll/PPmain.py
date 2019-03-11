@@ -60,7 +60,15 @@ with open('py_poll_kb.txt', 'w') as text:
     text.write(" -------------------------\n")
     text.write(f"Total Votes: {str(count - 1)}\n")
     text.write(" -------------------------\n")
-    text.write(f" {candidate_name}: {round(percentage, 4)}% ({str(vote)})\n")
+    max_vote = 0
+    max_candidate = ''
+    for candidate_name, vote in candidate_totals.items():
+        percentage = (vote / count) * 100
+        text.write(f" {candidate_name}: {round(percentage, 4)}% ({str(vote)})\n")
+        if vote > max_vote:
+            max_vote = vote
+            max_candidate = candidate_name
+
     text.write(" -------------------------\n")
     text.write(f"Winner: {str(max_candidate)}\n")
     text.write(" -------------------------\n")

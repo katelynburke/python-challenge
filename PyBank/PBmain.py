@@ -86,7 +86,7 @@ with open(csvpath, newline="") as csvfile:
 
 
 
-with open('py_poll_kb.txt', 'w') as text:
+with open('py_bank_kb.txt', 'w') as text:
     text.write("Financial Analysis\n")
     text.write("-------------------------\n")
     text.write(f"Total Months: {str(count - 1)}\n")
